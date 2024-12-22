@@ -13,7 +13,7 @@ return {
         })
         require('telescope.builtin').find_files(opts)
       end)
-      vim.keymap.set("n", "<space>fb", function()
+      vim.keymap.set("n", "<space>bb", function()
         local opts = require('telescope.themes').get_ivy()
         require('telescope.builtin').buffers(opts)
       end)
