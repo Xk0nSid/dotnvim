@@ -11,6 +11,9 @@ vim.keymap.set("n", "g]", "<cmd>tabnext<cr>")
 
 vim.keymap.set("t", "<esc><esc>", "<C-\\><C-n>", { noremap = true })
 
+vim.keymap.set("n", "<space>cp", "<cmd>make<CR>")
+vim.keymap.set("n", "<space>cf", "<cmd>make %:r<CR>")
+
 -- Highlight when yanking (copying) text
 vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight when yanking (copying) text',
