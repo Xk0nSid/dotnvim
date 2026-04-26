@@ -1,5 +1,8 @@
+local mason_bin = vim.fn.stdpath("data") .. "/mason/bin"
+
 -- Configure ts_ls using the new API
 vim.lsp.config("ts_ls", {
+  cmd = { mason_bin .. "/typescript-language-server", "--stdio" },
   capabilities = vim.lsp.protocol.make_client_capabilities(),
   settings = {
     typescript = {
@@ -12,6 +15,7 @@ vim.lsp.config("ts_ls", {
 })
 
 vim.lsp.config("lua_ls", {
+  cmd = { mason_bin .. "/lua-language-server" },
   settings = {
     Lua = {
       runtime = {

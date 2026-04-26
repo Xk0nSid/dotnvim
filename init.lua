@@ -167,7 +167,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 -- Set filetype-specific settings
 vim.api.nvim_create_autocmd("FileType", {
   group = augroup,
-  pattern = {  "python" },
+  pattern = { "python" },
   callback = function()
     vim.opt_local.tabstop = 4
     vim.opt_local.shiftwidth = 4
@@ -413,25 +413,6 @@ vim.api.nvim_create_autocmd("BufReadPost", {
   end,
 })
 
--- Set filetype-specific settings
-vim.api.nvim_create_autocmd("FileType", {
-  group = augroup,
-  pattern = { "lua", "python" },
-  callback = function()
-    vim.opt_local.tabstop = 4
-    vim.opt_local.shiftwidth = 4
-  end,
-})
-
-vim.api.nvim_create_autocmd("FileType", {
-  group = augroup,
-  pattern = { "javascript", "typescript", "json", "html", "css" },
-  callback = function()
-    vim.opt_local.tabstop = 2
-    vim.opt_local.shiftwidth = 2
-  end,
-})
-
 -- Auto-close terminal when process exits
 vim.api.nvim_create_autocmd("TermClose", {
   group = augroup,
@@ -656,6 +637,9 @@ end, { desc = 'Copy relative file path' })
 -- Plugins
 -- ========
 
+-- Add mason binaries to PATH so vim.lsp.config can find executables
+vim.env.PATH = vim.fn.stdpath("data") .. "/mason/bin:" .. vim.env.PATH
+
 -- Load Lazy for plugins
 require('config.lazy')
 
@@ -681,5 +665,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     vim.keymap.set("n", "]d",         vim.diagnostic.goto_next, opts)
   end,
 })
+
+require("lsp")
 
 
